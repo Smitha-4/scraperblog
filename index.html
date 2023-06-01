@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraping Basics | Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container1">
+        <div class="maindiv">
+            <center>
+                <br><br><br><br>
+                <h1>Scraping Basics</h1>
+                <h3>In this article I am going to be describing about wescraping in a smiplest way. I am also going to discuss about storing the scraped values in a database</h3>
+
+            </center>
+        </div>
+        <br><br>
+        <div class="spacer1"></div>
+        <div class="basics">
+            <h1>Introduction</h1>
+            <h6>&nbsp;&nbsp;&nbsp;&nbsp;Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites. Web scraping software may directly access the World Wide Web using the Hypertext Transfer Protocol or a web browser. While web scraping can be done manually by a software user, the term typically refers to automated processes implemented using a bot or web crawler. It is a form of copying in which specific data is gathered and copied from the web, typically into a central local database or spreadsheet, for later retrieval or analysis.
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Scraping a web page involves fetching it and extracting from it. Fetching is the downloading of a page (which a browser does when a user views a page). 
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;As well as contact scraping, web scraping is used as a component of applications used for web indexing, web mining and data mining, online price change monitoring and price comparison, product review scraping (to watch the competition), gathering real estate listings, weather data monitoring, website change detection, research, tracking online presence and reputation, web mashup, and web data integration.
+                <br><br>
+               
+               </h6>
+        <br><br>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;This project is about scraping solar panel details of the different companies from around the world. I have used a database from Europe for the project. The website name is https://www.enfsolar.com/ This website contains all the information about various products used in installing a mini solar power plant at house. I have attempted to collect only the information about solar panels listed in the site.</h4>
+        <br><br>
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;I have decided to collect the following information about earch individual solar panel
+<ul>
+    <li>Name of the product</li>
+    <li>Series Name</li>
+    <li>Price/Wp</li>
+    <li>Type</li>
+    <li>Power Range</li>
+    <li>Efficiency</li>
+    <li>Description of the product</li>
+</ul>
+</h4>
+        <br><br>
+
+            </div>
+            <div class="spacer"></div>
+            <br><br>
+            <div class="basics">
+                <h1>Steps to follow</h1>
+    
+                <h3>These are the steps that I have followed for the execution of this Project </h3>
+                <ul>
+                    <li>
+                        Imorting the neccessary libraries
+                    </li>
+                    <li>check wheather multiple pages can be accessed by the url definition or not</li>
+                    <li>Use of simple while loop to get the required information</li>
+                    <li>Using pandas create the dateframe</li>
+                    <li>Check and convert the dataframe to csv file and at last</li>
+                    
+                </ul>
+            </div>
+            <div class="spacer"></div> 
+            <br><br>
+            <div class="basics">
+              <h1>Importing the libraries</h1>
+              <br><br>
+              <h4>Here I have used Beautiful Soup Library to scrape the pages. The Beautiful Soup is a python library which is named after a Lewis Carroll poem of the same name in “Alice’s Adventures in the Wonderland”. Beautiful Soup is a python package and as the name suggests, parses the unwanted data and helps to organize and format the messy web data by fixing bad HTML and present to us in an easily-traversible XML structures. In short, Beautiful Soup is a python package which allows us to pull data out of HTML and XML documents.
+          <br>
+                  I have used requests to get the url response from the site https://www.enfsolar.com/ 
+                  <br>
+                  Pandas is required to change the raw information in a clean data frame</h4>
+                  <img src="/images/code1.png" alt="">
+            </div>
+ 
+          <br><br>
+         
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>Step 2: check wheather multiple pages can be accessed by the url definition or not</h1>
+              <h5>Today I am trying to scrape a multiple pages, so I wanted to make sure all the pages can be accessed or not. In order to do that I just simply used a while with page numbers as a variable and printed out all the links</h5>
+          <img src="/images/code2.png" alt="">
+          </div>
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>Step3: Use of simple while loop to get the required information</h1>
+              <h5>Here First used while to get the information about a single value from 10 pages which is series name of the solar panel. To do this I declared a list, using find_all() function I  brought the information by its class name. While loop is used to change the page number. Each time the loop executes, The information from the li tag is stored inside the list series name </h5>
+              <img src="/images/code3.png" alt="">
+          </div>
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>gerneral_list() function</h1>
+              <h5>The general_list() function is a generalized function which can be used for get information from multiple pages of different tags with class names. 
+                  <br>
+                  The parameters include, total number of pages to be scraped or the last page number, A list which can carry the collected information, the tag name from which the data has to be collected, and lastly the class name for proper collection of similar tags.
+                  <br>
+                  In order to go from the starting page to the last page I have used a while loop with page to be as the itiration variable which is increamented at the end. 
+                  
+                  <br> The Function starts with url set to the specific address, then responses are brought from this site address using requests module with the help of get() function. The whole response is set parsed as lxml using beautifulSoup module. 
+                  
+                  <br> Using simple find_all method, information is brought from the specific tags by using their class names and appended into the list. This list can be later saved as a dataframe which is explained below</h5>
+              
+              <img src="/images/code4.png" alt="">
+              <img src="/images/code5.png" alt="">
+              <p>I repeated the procedure to get name of the solar company information from the site. Later on I appended all the lists to another List called panel_details.</p>
+              <img src="/images/code6.png" alt="">
+              <img src="/images/code7.png" alt="">
+              <img src="/images/code8.png" alt="">
+              <img src="/images/code9.png" alt="">
+
+            </div>
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>Combining different lists into a single list</h1>
+              <h3></h3>
+              <img src="/images/code10.png" alt="">
+              <img src="/images/code11.png" alt="">
+          </div>
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>Step4: Using pandas create the dateframe</h1>
+              <h5>By using pd.DataFrame() method, I created a table by passing the list panel_detailsand cheked it by printing and using head() method</h5>
+              <img src="/images/code13.png" alt="">
+          </div>
+          <div class="spacer"></div>
+          <br><br>
+          <div class="basics">
+              <h1>Step 5: Check and convert the dataframe to csv file and at last</h1>
+              <h5>Since the data frame is clearly vissible in the above cell, Now Im converting the dataFrame to csv using to_csv() method</h5>
+              <img src="/images/code12.png" alt="">
+          
+          </div>
+          <div class="space"></div>
+          <br><br>
+          <div class="basics">
+            <h1>Conclusion and Future work</h1>
+            <h5>Here I have used https://www.enfsolar.com/ to collect the information about different companies solar panel details. The site also contains various other products. In future I will try to scrape other product details listed in the site.</h5>
+          </div>
+          <br><br><div class="spacer"></div>
+          <br><br>
+        </div>
+     
+<footer>
+    <div class="image" >
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d208.1887920398659!2d75.84982910482319!3d12.595701932895953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1685604242946!5m2!1sen!2sin" width="300" height="300" style="border:0;padding: 15px;margin-top: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+    <div class="image" >
+        <h2 style="color: rgb(110, 110, 110);">Connect to me  via</h2>
+       <h6><a style="color: black;" class="footer_links" href="mailto:reachto.smitha@yahoo.com"> <i class="fas fa-envelope"></i> reachto.smitha@yahoo.com</a></h6>
+       <h6> <a style="color: black;" class="footer_links" href="tel:+919742330941"><i class="fas fa-phone-rotary"></i> +91 9742330941</a></h6>
+       <h6><a style="color: black;" href="https://www.linkedin.com/in/smitha4r/" class="footer_links" target="_blank"> <i class="fab fa-linkedin"></i> LinkedIn</a></h6>
+       <h6><a style="color: black;" target="_blank" href="https://github.com/Smitha-4" class="footer_links"><i class="fab fa-github-square"></i> GitHub</a></h6>
+       
+        <h6 style="color: black;">For the original code and dataset <a href="https://jovian.com/reachto-smitha/scraping-solar-panel-details-of-varies-solar-companies-accross-the-world" target="_blank" rel="noopener noreferrer"> click here</a></h6>
+        <br><br><br><br>
+    </div>
+    <div class="image" >
+        <img src="/images/my sketch by me new.jpg" alt="">
+        <br><br><br><br>
+    </div>
+</footer>
+</body>
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</html>
